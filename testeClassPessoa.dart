@@ -24,3 +24,20 @@ abstract class Pessoa
   
   
 }
+
+
+class Atleta extends Pessoa
+{
+  String _tipo;
+  double _peso;
+  int _numMedalhas;
+  
+  set tipo(String tipo){this._tipo = tipo;}
+  get tipo => this._tipo;
+  
+  set peso(double peso){this._peso = peso;}
+  get peso => this._peso;
+  
+  set medalhas(int medalhas){this._numMedalhas = medalhas;}
+  get medalhas => this._numMedalhas;
+}
