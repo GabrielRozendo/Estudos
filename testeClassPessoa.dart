@@ -40,4 +40,28 @@ class Atleta extends Pessoa
   
   set medalhas(int medalhas){this._numMedalhas = medalhas;}
   get medalhas => this._numMedalhas;
+
+
+   void treinar(int calorias)
+  {
+     
+    print("O atleta $nome treinou e perdeu ${pesoPerdido(calorias)}kg!");
+   
+  }
+  
+  
+  int pesoPerdido(int calorias)
+  {
+    if(calorias == 70000){
+       this._peso-- ;
+    }
+    
+     else{
+       calorias = calorias~/7000;
+       peso = peso - calorias;
+       
+     }
+    
+   return peso;  
+  }
 }
