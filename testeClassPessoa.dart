@@ -72,13 +72,13 @@ abstract class Pessoa {
 
 class Diretor extends Pessoa{
   
-  final String _assinatura;
-  set assinatura => ;
+  final String _assinatura = "teste teste".hashCode.toString();
   get assinatura => this._assinatura;
-  
+
+
   String assinar()
   {
-    return this._assinatura;
+    return assinatura;
   }
 }
 
