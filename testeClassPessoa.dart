@@ -70,7 +70,36 @@ abstract class Pessoa {
 
 
 
+class Diretor extends Pessoa{
+  
+  final String _assinatura;
+  set assinatura => ;
+  get assinatura => this._assinatura;
+  
+  String assinar()
+  {
+    return this._assinatura;
+  }
+}
 
+
+
+
+class Tecnico extends Pessoa
+{
+  void planejarTreino(String nomeTreino)
+  {
+    print("O técnico $nome está planejando um treino de $nomeTreino");
+  }
+  
+  
+  void madarTreino(Atleta atletas){
+    print("O técnico $nome está executando o treino para o(s) $atletas");
+   
+  }
+  
+  
+}
 
 
 
