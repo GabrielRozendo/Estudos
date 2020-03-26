@@ -38,7 +38,7 @@ class Time
    void venderAtleta(String cpf,double valorVenda,Diretor diretor)
   {
     fundoMonetario += valorVenda;
-    this._atletas.retainWhere((item)=>cpf == item.nome);
+    this._atletas.removeWhere((item)=> cpf == item.nome);
     print("O ${atletas.nome} foi vendido por um valor de $valorVenda");
   }
   
