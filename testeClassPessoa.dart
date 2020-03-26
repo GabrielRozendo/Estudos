@@ -2,8 +2,9 @@ void main() {
 
     Atleta ok = Atleta();
     ok.nome = "Pedro";
-    ok.peso = 76;
-    ok.treinar(9000);
+
+
+
 
 
 }
@@ -28,7 +29,7 @@ abstract class Pessoa {
     set cpf(String cpf)=> this._cpf = cpf;
     get cpf => this._cpf;
       
-     
+    
       
       
     }
@@ -43,6 +44,7 @@ class Atleta extends Pessoa {
 
     set medalhas(int medalhas){ this._numMedalhas = medalhas; }
     get medalhas => this._numMedalhas;
+
 
 
 
@@ -67,10 +69,43 @@ String _pesoPerdido(double calorias)
 
     else {
         this._peso -= calorias;
-        calorias *=100;
+        calorias *= 100;
         return calorias.toStringAsPrecision(2) + "g";
     }
 
 
+}
+
+
+void comer(double calorias)
+{
+    print("O atleta $nome comeu e ganhou ${_pesoGanho(calorias)}! E agora esta com ${peso}Kg");
+}
+
+
+String _pesoGanho(double calorias)
+{
+
+    calorias /= 7000;
+
+    if (calorias > 1 || calorias == 1) {
+        this._peso += calorias;
+        return calorias.toStringAsPrecision(2) + "Kg";
+    }
+
+
+    else {
+        this._peso += calorias;
+        calorias *= 100;
+        return calorias.toStringAsPrecision(2) + "g";
+    }
+
+
+}
+
+void listarDados()
+{
+
+    return print("Nome:$nome \nIdade:$idade \nPeso:$peso \nCpf:$cpf \nTipo:$tipo \nNúmero de medalhas:$medalhas");
 }
 }
