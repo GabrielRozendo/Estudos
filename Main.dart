@@ -1,6 +1,6 @@
 void main()
 {
-    Pessoa p1 = Pessoa("Pedro", 1.76, DateTime.parse("2003-06-12"));
+    Pessoa p1 = Pessoa("Pedro", 1.76, DateTime.parse("2003-12-06"));
     print(p1.dados());
 
 }
@@ -11,30 +11,18 @@ class Pessoa {
     double _altura;
     DateTime _niver;
 
-    Pessoa(String nome, double altura, DateTime niver) {
-        this._nome = nome;
-        this._altura = altura;
-        this._niver = niver;
-
-    }
+    Pessoa(this._nome, this._altura, this._niver);
 
     String get nome{ return this._nome.toUpperCase(); }
     double get altura{ return this._altura; }
     DateTime get niver{ return this._niver; }
 
     int idade() {
+        return DateTime.now().difference(niver).inDays~/365;}
 
-        if (DateTime.now().month - niver.month == 0) {
+        String dados() {
 
-            return (DateTime.now().year - niver.year);
+            return "Nome:$nome\nIdade:${idade().toString()}\nAltura:${altura.toString()}\nNiver:${niver.toString()}";
         }
 
-        else { return (DateTime.now().year - niver.year) - 1; }
     }
-
-    String dados() {
-
-        return "Nome:$nome\nIdade:${idade().toString()}\nAltura:${altura.toString()}\nNiver:${niver.toString()}";
-    }
-
-}
