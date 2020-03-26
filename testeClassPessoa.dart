@@ -1,7 +1,8 @@
 void main() {
 
-    Atleta ok = Atleta();
-    ok.nome = "Pedro";
+   //EXECUTAR TESTES 1 DE CADA vEZ ---PS: FAZER TODAS AS VALIDAÇÕES ANTES DE TESTAR
+   //organizar melhor as classes e talvez adicionar outras pra deixar tudo mais organizado
+
 
 }
 
@@ -10,7 +11,7 @@ class Time
 {
   String _nome, _cnpj;
   double _fundoMonetario;
-  var _atletas = List();
+  var _atletas = List(); //olhar se não tem um modo mais específico para escrever lista + testar pra ver se tá dando pra colocar os objetos
   Diretor _diretor;
   Tecnico _tecnico;
   
@@ -27,8 +28,9 @@ class Time
   set tecnico(Tecnico tecnico) => this._tecnico = tecnico;
   get tecnico => this._tecnico;
   
-    void contratarAtleta(Atleta atleta,double valorAtleta)
+    void contratarAtleta(Atleta atleta,double valorAtleta,Diretor diretor)
   {
+    //validar com a assinatura do diretor
      fundoMonetario -= valorAtleta;
      atletas(atleta);
      print("O ${atleta.nome} foi contratado por um valor de $valorAtleta");
@@ -37,9 +39,35 @@ class Time
   
    void venderAtleta(String cpf,double valorVenda,Diretor diretor)
   {
+    //validar com a assinatura do diretor
     fundoMonetario += valorVenda;
-    this._atletas.removeWhere((item)=> cpf == item.nome);
+    this._atletas.removeWhere((item)=> cpf == item.nome); //tem que testar, talvez o item.nome não funcione  
     print("O ${atletas.nome} foi vendido por um valor de $valorVenda");
+  }
+
+  void pagarAtleta(String cpf, double valor,Diretor diretor)
+  {
+    //validar com assinatura do diretor (ideia --> o atleta já foi pago?)
+    fundoMonetario -= valor;
+    this._atletas.forEach(); //em aprendizado ainda, vendo tbm se tem uma maneira melhor de fazer 
+    
+  }
+
+
+
+   void planejarTreino(String nomeTreino,Tecnico tecnico)
+  {
+    //validar o planjamento com a assinatura do tecnico
+    print("O técnico $nome está planejando um treino de $nomeTreino");
+  }
+  
+  
+  void madarTreino(Atleta atletas,Tecnico tecnico)
+  {
+    //validar o treino com a assinatura do tecnico
+    //fazer o envio para o atleta | testar se a list tá funcionando e como atribuir o treino para todos os atletas e(ou) só alguns atletas
+    print("O técnico $nome está executando o treino para o(s) $atletas");
+   
   }
   
 }
@@ -72,7 +100,7 @@ abstract class Pessoa {
 
 class Diretor extends Pessoa{
   
-  final String _assinatura = "teste teste".hashCode.toString();
+  final String _assinatura = "teste teste".hashCode.toString(); //trocar para GUID, usar API uuid?
   get assinatura => this._assinatura;
 
 
@@ -87,17 +115,15 @@ class Diretor extends Pessoa{
 
 class Tecnico extends Pessoa
 {
-  void planejarTreino(String nomeTreino)
+ 
+    final String _assinatura = "teste teste".hashCode.toString(); //trocar para GUID, usar API uuid?
+  get assinatura => this._assinatura;
+
+
+  String assinar()
   {
-    print("O técnico $nome está planejando um treino de $nomeTreino");
+    return assinatura;
   }
-  
-  
-  void madarTreino(Atleta atletas){
-    print("O técnico $nome está executando o treino para o(s) $atletas");
-   
-  }
-  
   
 }
 
@@ -127,6 +153,7 @@ void receberSalario(double dinheiro)
   
   void gastarSalario(double dinheiro)
   {
+    //validar pra ver se  o cara não vai ficar negativo
     this._salario -= dinheiro;
     print("O atleta $nome recebeu $dinheiro e agora tem $salario reais");
   }
