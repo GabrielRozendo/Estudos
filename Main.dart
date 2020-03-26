@@ -7,15 +7,15 @@ void main()
 
 class Pessoa {
 
-    String _nome;
+    final String _nome;
     double _altura;
     DateTime _niver;
 
     Pessoa(this._nome, this._altura, this._niver);
 
-    String get nome{ return this._nome.toUpperCase(); }
-    double get altura{ return this._altura; }
-    DateTime get niver{ return this._niver; }
+     get nome => this._nome.toUpperCase(); 
+     get altura => this._altura; 
+     get niver => this._niver;
 
     int idade() {
         return DateTime.now().difference(niver).inDays~/365;}
