@@ -3,10 +3,6 @@ void main() {
     Atleta ok = Atleta();
     ok.nome = "Pedro";
 
-
-
-
-
 }
 
 
@@ -28,25 +24,33 @@ abstract class Pessoa {
 
     set cpf(String cpf)=> this._cpf = cpf;
     get cpf => this._cpf;
-      
-    
-      
-      
+
     }
 
 
 class Atleta extends Pessoa {
     String _tipo;
-    int _numMedalhas;
+    int _salario;
 
     set tipo(String tipo) { this._tipo = tipo; }
     get tipo => this._tipo;
 
-    set medalhas(int medalhas){ this._numMedalhas = medalhas; }
-    get medalhas => this._numMedalhas;
+    set salario(int dinheiro){ this._salario = salario; }
+    get salario => this._salario;
 
-
-
+void receberSalario(double dinheiro)
+{
+  this._salario += dinheiro;
+  print("O atleta $nome recebeu  $dinheiro e agora tem $salario reais");
+  
+}
+  
+  
+  void gastarSalario(double dinheiro)
+  {
+    this._salario -= dinheiro;
+    print("O atleta $nome recebeu $dinheiro e agora tem $salario reais");
+  }
 
 void treinar(double calorias)
 {
