@@ -6,6 +6,46 @@ void main() {
 }
 
 
+class Time
+{
+  String _nome, _cnpj;
+  double _fundoMonetario;
+  var _atletas = List();
+  Diretor _diretor;
+  Tecnico _tecnico;
+  
+  Time(this._nome,this._cnpj,fundoMonetario,atletas(atleta),diretor(diretor),this._tecnico);
+  
+  get nome=> this._nome;
+  get cnpj => this._cnpj;
+  set fundoMonetario(double dinheiro) => this._fundoMonetario = dinheiro;
+  get fundoMonetario => this._fundoMonetario;
+  set atletas(Atleta atleta) =>this._atletas.add(atleta);
+  get atletas => this._atletas;
+  set diretor(Diretor diretor) => this._diretor = diretor;
+  get diretor => this._diretor;
+  set tecnico(Tecnico tecnico) => this._tecnico = tecnico;
+  get tecnico => this._tecnico;
+  
+    void contratarAtleta(Atleta atleta,double valorAtleta)
+  {
+     fundoMonetario -= valorAtleta;
+     atletas(atleta);
+     print("O ${atleta.nome} foi contratado por um valor de $valorAtleta");
+  }
+  
+  
+  void venderAtleta(Atleta atleta,double valorVenda,Diretor diretor)
+  {
+    fundoMonetario += valorVenda;
+    this._atletas.remove(atletas);
+    print("O ${atleta.nome} foi vendido por um valor de $valorVenda");
+  }
+  
+}
+
+
+
 abstract class Pessoa {
 
     String _nome;
@@ -26,6 +66,16 @@ abstract class Pessoa {
     get cpf => this._cpf;
 
     }
+
+
+
+
+
+
+
+
+
+
 
 
 class Atleta extends Pessoa {
@@ -110,6 +160,6 @@ String _pesoGanho(double calorias)
 void listarDados()
 {
 
-    return print("Nome:$nome \nIdade:$idade \nPeso:$peso \nCpf:$cpf \nTipo:$tipo \nNúmero de medalhas:$medalhas");
+    return print("Nome:$nome \nIdade:$idade \nPeso:$peso \nCpf:$cpf \nTipo:$tipo \nSalário:$salario");
 }
 }
