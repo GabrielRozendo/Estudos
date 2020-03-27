@@ -75,25 +75,27 @@ class Time
 
 
 abstract class Pessoa {
+  String _nome;
+  int _idade;
+  double _peso;
+  String _cpf;
+  double _salario;
 
-    String _nome;
-    int _idade;
-    double _peso;
-    String _cpf;
+  set nome(String nome) => this._nome = nome;
+  get nome => this._nome;
 
-    set nome(String nome) => this._nome = nome;
-    get nome => this._nome;
+  set idade(int idade) => this._idade = idade;
+  get idade => this._idade;
 
-    set idade(int idade) => this._idade = idade;
-    get idade => this._idade;
+  set peso(double peso) => this._peso = peso;
+  get peso => this._peso.toStringAsPrecision(4);
 
-    set peso(double peso) => this._peso = peso;
-    get peso => this._peso.toStringAsPrecision(4);
+  set cpf(String cpf) => this._cpf = cpf;
+  get cpf => this._cpf;
 
-    set cpf(String cpf)=> this._cpf = cpf;
-    get cpf => this._cpf;
-
-    }
+  set salario(double dinheiro) => this._salario = dinheiro;
+  get salario => this._salario;
+}
 
 
 
@@ -134,88 +136,59 @@ class Tecnico extends Pessoa
 
 
 class Atleta extends Pessoa {
-    String _tipo;
-    int _salario;
+  String _modalidade;
 
-    set tipo(String tipo) { this._tipo = tipo; }
-    get tipo => this._tipo;
+  set modalidade(String modalidade) => this._modalidade = modalidade;
+  get tipo => this._modalidade;
 
-    set salario(int dinheiro){ this._salario = salario; }
-    get salario => this._salario;
-
-void receberSalario(double dinheiro)
-{
-  this._salario += dinheiro;
-  print("O atleta $nome recebeu  $dinheiro e agora tem $salario reais");
-  
-}
-  
-  
-  void gastarSalario(double dinheiro)
-  {
-    //validar pra ver se  o cara não vai ficar negativo
+  void gastarSalario(double dinheiro) {
+    if(dinheiro > salario){
+      print("$nome não pode gastar essa quantia, o salário atual é de $salario reais");
+    }
+    else{
     this._salario -= dinheiro;
-    print("O atleta $nome recebeu $dinheiro e agora tem $salario reais");
+    print("O atleta $nome gastou $dinheiro e agora tem $salario reais");
+    }
   }
 
-void treinar(double calorias)
-{
+  void treinar(double calorias) {
+    print(
+        "O atleta $nome treinou e perdeu ${_pesoPerdido(calorias)}! E agora esta com ${peso}Kg");
+  }
 
-    print("O atleta $nome treinou e perdeu ${_pesoPerdido(calorias)}! E agora esta com ${peso}Kg");
-
-}
-
-
-String _pesoPerdido(double calorias)
-{
-
+  String _pesoPerdido(double calorias) {
     calorias /= 7000;
 
     if (calorias > 1 || calorias == 1) {
-        this._peso -= calorias;
-        return calorias.toStringAsPrecision(2) + "Kg";
+      this._peso -= calorias;
+      return calorias.toStringAsPrecision(2) + "Kg";
+    } else {
+      this._peso -= calorias;
+      calorias *= 100;
+      return calorias.toStringAsPrecision(2) + "g";
     }
+  }
 
+  void comer(double calorias) {
+    print(
+        "O atleta $nome comeu e ganhou ${_pesoGanho(calorias)}! E agora esta com ${peso}Kg");
+  }
 
-    else {
-        this._peso -= calorias;
-        calorias *= 100;
-        return calorias.toStringAsPrecision(2) + "g";
-    }
-
-
-}
-
-
-void comer(double calorias)
-{
-    print("O atleta $nome comeu e ganhou ${_pesoGanho(calorias)}! E agora esta com ${peso}Kg");
-}
-
-
-String _pesoGanho(double calorias)
-{
-
+  String _pesoGanho(double calorias) {
     calorias /= 7000;
 
     if (calorias > 1 || calorias == 1) {
-        this._peso += calorias;
-        return calorias.toStringAsPrecision(2) + "Kg";
+      this._peso += calorias;
+      return calorias.toStringAsPrecision(2) + "Kg";
+    } else {
+      this._peso += calorias;
+      calorias *= 100;
+      return calorias.toStringAsPrecision(2) + "g";
     }
+  }
 
-
-    else {
-        this._peso += calorias;
-        calorias *= 100;
-        return calorias.toStringAsPrecision(2) + "g";
-    }
-
-
-}
-
-void listarDados()
-{
-
-    return print("Nome:$nome \nIdade:$idade \nPeso:$peso \nCpf:$cpf \nTipo:$tipo \nSalário:$salario");
-}
+  void listarDados() {
+    return print(
+        "Nome:$nome \nIdade:$idade \nPeso:$peso \nCpf:$cpf \nModalidade:$modalidade \nSalário:$salario");
+  }
 }
