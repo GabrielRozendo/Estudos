@@ -30,7 +30,7 @@ void main() {
 
   Time vasco = Time("nome", "1111", 10000, ok3, ok2);
   vasco.contratarAtleta(ok, 10000, "tesedasasasdasf",
-      DateTime.parse("2011-12-06"), DateTime.parse("2012-12-06"));
+  DateTime.parse("2011-12-06"), DateTime.parse("2012-12-06"));
   vasco.pagarAtleta(ok, 1000);
   vasco.listarDaddosA();
   vasco.venderAtleta(ok, 10);
@@ -57,7 +57,7 @@ abstract class Pessoa {
   get cpf => this._cpf;
 
   set assinatura(String assinatura) =>
-      this._assinatura = assinatura.hashCode.toString();
+  this._assinatura = assinatura.hashCode.toString();
   get assinatura => this._assinatura;
 
   set salario(double dinheiro) => this._salario = dinheiro;
@@ -93,10 +93,9 @@ class Time {
 
   void contratarAtleta(Atleta atleta, double valor, String termos,
       DateTime dtinicio, DateTime dtfinal) {
-    if (this._tecnico.testarAtleta(atleta.idade, double.parse(atleta.peso)) ==
-        true) {
-      atleta.contrato =
-          this._diretor.fazerContrato(atleta, valor, termos, dtinicio, dtfinal);
+    if (this._tecnico.testarAtleta(atleta.idade, double.parse(atleta.peso)) ==true) 
+    {
+      atleta.contrato = this._diretor.fazerContrato(atleta, valor, termos, dtinicio, dtfinal);
       this.atletas = atleta;
       this._fundoMonetario -= valor;
       print("O ${atleta.nome} foi contratado!");
@@ -126,10 +125,9 @@ class Time {
   }
 
   void executarTreino() {
-    if (_obterTreino().instrucoes != "" &&
-        this._tecnico.assinatura == _obterTreino().assinatura) {
-      return print(
-          "O técnico ${this._tecnico.nome} ira aplicar um treino na data de ${_obterTreino().data},as instruções seguem abaixo \n${_obterTreino().instrucoes}");
+    if (_obterTreino().instrucoes != "" && this._tecnico.assinatura == _obterTreino().assinatura) 
+    {
+      return print("O técnico ${this._tecnico.nome} ira aplicar um treino na data de ${_obterTreino().data},as instruções seguem abaixo \n${_obterTreino().instrucoes}");
     } else {
       return print("Treino negado");
     }
@@ -146,9 +144,11 @@ class Tecnico extends Pessoa {
   get treino => this._treino;
 
   bool testarAtleta(int idade, double peso) {
-    if (idade >= 18 && peso > 60) {
+    if (idade >= 18 && peso > 60) 
+    {
       return true;
-    } else {
+    } else 
+    {
       return false;
     }
   }
@@ -158,8 +158,7 @@ class Tecnico extends Pessoa {
   }
 
   void planejarTreino(String instrucoes, DateTime data) {
-    PlanejamentoTreino treino =
-        PlanejamentoTreino(instrucoes, data, this.assinar());
+    PlanejamentoTreino treino = PlanejamentoTreino(instrucoes, data, this.assinar());
     this._treino = treino;
   }
 }
@@ -179,10 +178,8 @@ class PlanejamentoTreino {
 }
 
 class Diretor extends Pessoa {
-  Contrato fazerContrato(Atleta atleta, double valor, String termos,
-      DateTime dtinicio, DateTime dtfinal) {
-    Contrato contrato = Contrato(
-        termos, valor, atleta.assinar(), this.assinar(), dtinicio, dtfinal);
+  Contrato fazerContrato(Atleta atleta, double valor, String termos,DateTime dtinicio, DateTime dtfinal) {
+    Contrato contrato = Contrato(termos, valor, atleta.assinar(), this.assinar(), dtinicio, dtfinal);
     return contrato;
   }
 }
@@ -199,12 +196,10 @@ class Contrato //tem dois tipos de contrato,o de recisão e o de adesão PS: log
   get assinaturaAt => this._assinaturaAt;
   get inicio => this._dtinicio;
   get dtfinal => this._dtfinal;
-  Contrato(this._termo, this._valor, this._assinaturaAt, this._assinaturaDir,
-      this._dtinicio, this._dtfinal);
+  Contrato(this._termo, this._valor, this._assinaturaAt, this._assinaturaDir,this._dtinicio, this._dtfinal);
 
   void listarDados() {
-    print(
-        "Termo:$termo \nValor:$valor \nData de início:$inicio \nData final:$dtfinal \nAssinatura do Diretor do time: $assinaturaDir \nAssinatura do atleta: $assinaturaAt");
+    print("Termo:$termo \nValor:$valor \nData de início:$inicio \nData final:$dtfinal \nAssinatura do Diretor do time: $assinaturaDir \nAssinatura do atleta: $assinaturaAt");
   }
 }
 
@@ -224,8 +219,7 @@ class Atleta extends Pessoa {
 
   void gastarSalario(double dinheiro) {
     if (dinheiro > salario) {
-      print(
-          "$nome não pode gastar essa quantia, o salário atual é de $salario reais");
+      print("$nome não pode gastar essa quantia, o salário atual é de $salario reais");
     } else {
       this._salario -= dinheiro;
       print("O atleta $nome gastou $dinheiro e agora tem $salario reais");
@@ -233,8 +227,7 @@ class Atleta extends Pessoa {
   }
 
   void treinar(double calorias) {
-    print(
-        "O atleta $nome treinou e perdeu ${_pesoPerdido(calorias)}! E agora esta com ${peso}Kg");
+    print("O atleta $nome treinou e perdeu ${_pesoPerdido(calorias)}! E agora esta com ${peso}Kg");
   }
 
   String _pesoPerdido(double calorias) {
@@ -251,8 +244,7 @@ class Atleta extends Pessoa {
   }
 
   void comer(double calorias) {
-    print(
-        "O atleta $nome comeu e ganhou ${_pesoGanho(calorias)}! E agora esta com ${peso}Kg");
+    print("O atleta $nome comeu e ganhou ${_pesoGanho(calorias)}! E agora esta com ${peso}Kg");
   }
 
   String _pesoGanho(double calorias) {
