@@ -1,11 +1,7 @@
-// Copyright 2015 the Dart project authors. All rights reserved.
-// Use of this source code is governed by a BSD-style license
-// that can be found in the LICENSE file.
-
 void main() {
   Atleta ok = Atleta();
   ok.nome = "Pedro";
-  ok.idade = 16;
+  ok.idade = 18;
   ok.peso = 76;
   ok.cpf = "121.692.176-33";
   ok.assinatura = "pedro";
@@ -14,8 +10,8 @@ void main() {
   ok.comer(9000);
   ok.treinar(7000);
   ok.gastarSalario(500);
-  ok.listarDados();
-  BancoAtletas.cadastrarAtleta(ok);
+
+ 
 
   Tecnico ok2 = Tecnico();
   ok2.nome = "Ricardo";
@@ -35,8 +31,8 @@ void main() {
   ok3.assinatura = "teste1";
 
   Time vasco = Time("nome", "1111",10000, ok3, ok2);
-  
-  vasco.executarTreino();
+  vasco.contratarAtleta(ok,10000,"tesedasasasdasf",DateTime.parse("2011-12-06"),DateTime.parse("2012-12-06"));
+
 }
 
 abstract class Pessoa {
@@ -65,6 +61,9 @@ abstract class Pessoa {
 
   set salario(double dinheiro) => this._salario = dinheiro;
   get salario => this._salario;
+  
+  
+  String assinar() => assinatura;
 }
 
 class Time {
@@ -85,28 +84,24 @@ class Time {
   set tecnico(Tecnico tecnico) => this._tecnico = tecnico;
   get tecnico => this._tecnico;
   set atletas(Atleta atleta) => this._atletas.add(atleta);
-
   
-  
-  
-   void contratarAtleta(Atleta atleta,double valor,String termos,DateTime dtinicio,dtfinal)
+   void contratarAtleta(Atleta atleta,double valor,String termos,DateTime dtinicio,DateTime dtfinal)
    {
-     if(this._tecnico.testarAtleta(atleta) == true)
-     {     atleta.contrato=this._diretor.fazerContrato(termos,dtinicio,dtfinal,atleta,valor);
+     if(this._tecnico.testarAtleta(atleta.idade,double.parse(atleta.peso))==true)
+     {     
+        atleta.contrato=this._diretor.fazerContrato(atleta,valor,termos,dtinicio,dtfinal);
       this.atletas = atleta;
+      this._fundoMonetario -=valor;
       print("O ${atleta.nome} foi contratado!");
        
      }
-     
-     
+
      else
      {
        print("O ${atleta.nome} foi recusado");
      }
      
    }
-  
-
   
 
  /* void venderAtleta(String cpf, double valorVenda, Diretor diretor) {
@@ -122,11 +117,6 @@ class Time {
     fundoMonetario -= valor;
     this._atletas .forEach(); //em aprendizado ainda, vendo tbm se tem uma maneira melhor de fazer
   } */
-
-  
-  
-  
-  
   
   PlanejamentoTreino _obterTreino() {
     return this._tecnico.treino;
@@ -143,21 +133,14 @@ class Time {
   }
 }
 
-
-
-
 class Tecnico extends Pessoa {
   PlanejamentoTreino _treino;
 
   get treino => this._treino;
 
-  String assinar() {
-    return assinatura;
-  }
-  
-  bool testarAtleta(Atleta atleta)
+  bool testarAtleta(int idade,double peso)
   {
-    if(atleta.idade > 18 && atleta.peso > 60){return true;}
+    if(idade >= 18 && peso > 60){return true;}
     else{return false;}
   }
 
@@ -170,8 +153,6 @@ class Tecnico extends Pessoa {
     this._treino = treino;
   }
 }
-
-
 
 class PlanejamentoTreino {
   String _instrucoes;
@@ -187,23 +168,15 @@ class PlanejamentoTreino {
   PlanejamentoTreino(this._instrucoes,this._data,this._assinaturaTecnico);
 }
 
-
-
-
-
-
-
 class Diretor extends Pessoa {
   
-  Contrato fazerContrato(String termos,DateTime dtinicio,dtfinal,Atleta atleta,double valor)
+  Contrato fazerContrato(Atleta atleta,double valor,String termos,DateTime dtinicio,DateTime dtfinal)
   {
     Contrato contrato = Contrato(termos,valor,atleta.assinar(),this.assinar(),dtinicio,dtfinal);
     return contrato;
   }
   
-  String assinar() {
-    return assinatura;
-  }
+
 }
 
 
@@ -226,15 +199,6 @@ class Contrato
   
 }
 
-
-
-
-
-
-
-
-
-
 class Atleta extends Pessoa {
   String _modalidade;
   Contrato _contrato;
@@ -244,11 +208,6 @@ class Atleta extends Pessoa {
   
   set contrato(Contrato contrato) => this._contrato = contrato;
   get contrato => this._contrato.listarDados();
-  
- String assinar() {
-    return assinatura;
-  }
-  
   
   void verContrato()
   {
