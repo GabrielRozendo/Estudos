@@ -11,8 +11,6 @@ void main() {
   ok.treinar(7000);
   ok.gastarSalario(500);
 
- 
-
   Tecnico ok2 = Tecnico();
   ok2.nome = "Ricardo";
   ok2.idade = 46;
@@ -30,9 +28,12 @@ void main() {
   ok3.salario = 10000;
   ok3.assinatura = "teste1";
 
-  Time vasco = Time("nome", "1111",10000, ok3, ok2);
-  vasco.contratarAtleta(ok,10000,"tesedasasasdasf",DateTime.parse("2011-12-06"),DateTime.parse("2012-12-06"));
-
+  Time vasco = Time("nome", "1111", 10000, ok3, ok2);
+  vasco.contratarAtleta(ok, 10000, "tesedasasasdasf",
+      DateTime.parse("2011-12-06"), DateTime.parse("2012-12-06"));
+  vasco.pagarAtleta(ok, 1000);
+  vasco.listarDaddosA();
+  vasco.venderAtleta(ok, 10);
 }
 
 abstract class Pessoa {
@@ -61,8 +62,7 @@ abstract class Pessoa {
 
   set salario(double dinheiro) => this._salario = dinheiro;
   get salario => this._salario;
-  
-  
+
   String assinar() => assinatura;
 }
 
@@ -73,7 +73,13 @@ class Time {
   Diretor _diretor;
   Tecnico _tecnico;
 
-  Time(this._nome, this._cnpj, this._fundoMonetario, this._diretor, this._tecnico,);
+  Time(
+    this._nome,
+    this._cnpj,
+    this._fundoMonetario,
+    this._diretor,
+    this._tecnico,
+  );
 
   get nome => this._nome;
   get cnpj => this._cnpj;
@@ -84,40 +90,37 @@ class Time {
   set tecnico(Tecnico tecnico) => this._tecnico = tecnico;
   get tecnico => this._tecnico;
   set atletas(Atleta atleta) => this._atletas.add(atleta);
-  
-   void contratarAtleta(Atleta atleta,double valor,String termos,DateTime dtinicio,DateTime dtfinal)
-   {
-     if(this._tecnico.testarAtleta(atleta.idade,double.parse(atleta.peso))==true)
-     {     
-        atleta.contrato=this._diretor.fazerContrato(atleta,valor,termos,dtinicio,dtfinal);
+
+  void contratarAtleta(Atleta atleta, double valor, String termos,
+      DateTime dtinicio, DateTime dtfinal) {
+    if (this._tecnico.testarAtleta(atleta.idade, double.parse(atleta.peso)) ==
+        true) {
+      atleta.contrato =
+          this._diretor.fazerContrato(atleta, valor, termos, dtinicio, dtfinal);
       this.atletas = atleta;
-      this._fundoMonetario -=valor;
+      this._fundoMonetario -= valor;
       print("O ${atleta.nome} foi contratado!");
-       
-     }
-
-     else
-     {
-       print("O ${atleta.nome} foi recusado");
-     }
-     
-   }
-  
-
- /* void venderAtleta(String cpf, double valorVenda, Diretor diretor) {
-    //validar com a assinatura do diretor
-    fundoMonetario += valorVenda;
-    this._atletas.removeWhere((item) =>
-        cpf == item.nome); //tem que testar, talvez o item.nome não funcione
-    print("O ${atletas.nome} foi vendido por um valor de $valorVenda");
+    } else {
+      print("O ${atleta.nome} foi recusado");
+    }
   }
 
-  void pagarAtleta(String cpf, double valor, Diretor diretor) {
-    //validar com assinatura do diretor (ideia --> o atleta já foi pago?)
+  void venderAtleta(Atleta atleta, double valor) {
+    this._atletas.removeWhere((atletas) => atleta.cpf == atletas.cpf);
+    this._fundoMonetario += valor;
+    print("O atleta ${atleta.nome} foir vendido");
+
+    //fazer contrato de recisão
+  }
+
+  void pagarAtleta(Atleta atleta, double valor) {
+    //ideia --> o atleta já foi pago?, TALVEZ adicionar data, talvez um boleto?;
+
     fundoMonetario -= valor;
-    this._atletas .forEach(); //em aprendizado ainda, vendo tbm se tem uma maneira melhor de fazer
-  } */
-  
+    atleta.salario += valor;
+    print("O ${atleta.nome} foi pago");
+  }
+
   PlanejamentoTreino _obterTreino() {
     return this._tecnico.treino;
   }
@@ -131,6 +134,10 @@ class Time {
       return print("Treino negado");
     }
   }
+
+  void listarDaddosA() {
+    return this._atletas.forEach((item) => print(item.listarDados()));
+  }
 }
 
 class Tecnico extends Pessoa {
@@ -138,10 +145,12 @@ class Tecnico extends Pessoa {
 
   get treino => this._treino;
 
-  bool testarAtleta(int idade,double peso)
-  {
-    if(idade >= 18 && peso > 60){return true;}
-    else{return false;}
+  bool testarAtleta(int idade, double peso) {
+    if (idade >= 18 && peso > 60) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   void condicaoAtleta(Atleta atleta) {
@@ -149,7 +158,8 @@ class Tecnico extends Pessoa {
   }
 
   void planejarTreino(String instrucoes, DateTime data) {
-    PlanejamentoTreino treino = PlanejamentoTreino(instrucoes,data,this.assinar());
+    PlanejamentoTreino treino =
+        PlanejamentoTreino(instrucoes, data, this.assinar());
     this._treino = treino;
   }
 }
@@ -164,39 +174,38 @@ class PlanejamentoTreino {
   get data => this._data;
 
   get assinatura => this._assinaturaTecnico;
-  
-  PlanejamentoTreino(this._instrucoes,this._data,this._assinaturaTecnico);
+
+  PlanejamentoTreino(this._instrucoes, this._data, this._assinaturaTecnico);
 }
 
 class Diretor extends Pessoa {
-  
-  Contrato fazerContrato(Atleta atleta,double valor,String termos,DateTime dtinicio,DateTime dtfinal)
-  {
-    Contrato contrato = Contrato(termos,valor,atleta.assinar(),this.assinar(),dtinicio,dtfinal);
+  Contrato fazerContrato(Atleta atleta, double valor, String termos,
+      DateTime dtinicio, DateTime dtfinal) {
+    Contrato contrato = Contrato(
+        termos, valor, atleta.assinar(), this.assinar(), dtinicio, dtfinal);
     return contrato;
   }
-  
-
 }
 
-
-class Contrato
+class Contrato //tem dois tipos de contrato,o de recisão e o de adesão PS: logo contrato é abstrato,fazer isso!
 {
-  String _termo,_assinaturaDir,_assinaturaAt;
+  String _termo, _assinaturaDir, _assinaturaAt;
   double _valor;
-  DateTime _dtinicio,_dtfinal;
-  
+  DateTime _dtinicio, _dtfinal;
+
   get termo => this._termo;
   get valor => this._valor;
   get assinaturaDir => this._assinaturaDir;
   get assinaturaAt => this._assinaturaAt;
   get inicio => this._dtinicio;
-  get dtfinal => this._dtfinal;  
-  Contrato(this._termo,this._valor,this._assinaturaAt,this._assinaturaDir,this._dtinicio,this._dtfinal);
-  
- void listarDados(){print("Termo:$termo \nValor:$valor \nData de início:$inicio \nData final:$dtfinal \nAssinatura do Diretor do time: $assinaturaDir \nAssinatura do atleta: $assinaturaAt");} 
-  
-  
+  get dtfinal => this._dtfinal;
+  Contrato(this._termo, this._valor, this._assinaturaAt, this._assinaturaDir,
+      this._dtinicio, this._dtfinal);
+
+  void listarDados() {
+    print(
+        "Termo:$termo \nValor:$valor \nData de início:$inicio \nData final:$dtfinal \nAssinatura do Diretor do time: $assinaturaDir \nAssinatura do atleta: $assinaturaAt");
+  }
 }
 
 class Atleta extends Pessoa {
@@ -205,15 +214,14 @@ class Atleta extends Pessoa {
 
   set modalidade(String modalidade) => this._modalidade = modalidade;
   get tipo => this._modalidade;
-  
+
   set contrato(Contrato contrato) => this._contrato = contrato;
   get contrato => this._contrato.listarDados();
-  
-  void verContrato()
-  {
+
+  void verContrato() {
     return print(contrato);
   }
-  
+
   void gastarSalario(double dinheiro) {
     if (dinheiro > salario) {
       print(
