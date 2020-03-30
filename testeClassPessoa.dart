@@ -127,7 +127,7 @@ class Time {
   }
 
   void pagarAtleta(Atleta atleta, double valor) {
-    //ideia --> o atleta já foi pago?, TALVEZ adicionar data, talvez um boleto?;
+   
 
     fundoMonetario -= valor;
     atleta.salario += valor;
