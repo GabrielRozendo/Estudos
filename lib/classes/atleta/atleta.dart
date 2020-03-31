@@ -3,24 +3,20 @@ import"lib/classes/contrato/contrato.dart";
 
 class Atleta extends Pessoa {
   String _modalidade;
-  ContratoAdesao _contratoA;
-  ContratoRecisao _contratoR;
+  Contrato _contrato;
 
   set modalidade(String modalidade) => this._modalidade = modalidade;
   get tipo => this._modalidade;
 
-  set contratoA(ContratoAdesao contrato) => this._contratoA = contrato;
-  get contratoA => this._contratoA;
-
-  set contratoR(ContratoRecisao contrato) => this._contratoR = contrato;
-  get contratoR => this._contratoR;
-
-  void verContratoA() {
-    return print(this._contratoA.listarDadosContrato());
-  }
-
-  void verContratoR() {
-    return print(this._contratoR.listarDadosContrato());
+  get contrato => this._contrato;
+  
+  Atleta(String nome,int idade,double peso,String cpf,String assinatura,this._modalidade)
+  {
+    this._nome = nome;
+    this._idade = idade;
+    this._peso = peso;
+    this._cpf = cpf;
+    this._assinatura = assinatura;
   }
 
   void gastarSalario(double dinheiro) {
@@ -70,6 +66,6 @@ class Atleta extends Pessoa {
   }
 
   String listarDados() {
-    return "\nNome:$nome \nIdade:$idade \nPeso:$peso \nCpf:$cpf \nTipo:$tipo \nSalário:$salario \nAssinatura:$assinatura \nContrato de adesão: ${this._contratoA.listarDadosContrato()}";
+    return "\nNome:$nome \nIdade:$idade \nPeso:$peso \nCpf:$cpf \nTipo:$tipo \nSalário:$salario \nAssinatura:$assinatura \nContrato de adesão: ${this._contrato.listarDadosContrato()}";
   }
 }

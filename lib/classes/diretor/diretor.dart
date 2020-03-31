@@ -3,13 +3,18 @@ import"lib/classes/contrato/contrato.dart";
 import"lib/classes/atleta/atleta.dart";
 
 class Diretor extends Pessoa {
-  void fazerContratoAdesao(Atleta atleta, double valor, String termos, DateTime dtinicio, DateTime dtfinal) {
-    atleta.contratoA = ContratoAdesao(
-    termos, valor, atleta.assinar(), this.assinar(), dtinicio, dtfinal);
+
+  Diretor(String nome,int idade,double peso,String cpf,String assinatura)
+  {
+    this._nome = nome;
+    this._idade = idade;
+    this._peso = peso;
+    this._cpf = cpf;
+    this._assinatura= assinatura;
   }
 
-  void fazerContratoRecisao(Atleta atleta, double valor, String termos,ContratoAdesao contratoAdesao) {
-    atleta.contratoR = ContratoRecisao(termos, valor, atleta.assinar(),
-    this.assinar(), contratoAdesao.inicio, contratoAdesao.dtfinal);
+  void fazerContrato(Atleta atleta, double valor, String termos, DateTime dtinicio, DateTime dtfinal,String tipo) {
+    atleta.contrato = Contrato(tipo,termos,valor,dtinicio,dtfinal,atleta.assinar(),this.assinar());
+    
   }
 }

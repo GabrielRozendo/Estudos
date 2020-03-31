@@ -7,6 +7,15 @@ class Tecnico extends Pessoa {
 
   get treino => this._treino;
 
+  Tecnico(String nome,int idade,double peso,String cpf,String assinatura)
+  {
+    this._nome = nome;
+    this._idade = idade;
+    this._peso = peso;
+    this._cpf = cpf;
+    this._assinatura= assinatura;
+  }
+
   bool testarAtleta(int idade, double peso) {
     if (idade >= 18 && peso > 60) {
       return true;
