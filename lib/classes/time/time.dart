@@ -48,8 +48,6 @@ class Time {
   }
 
   void pagarAtleta(Atleta atleta, double valor) {
-   
-
     fundoMonetario -= valor;
     atleta.salario += valor;
     print("O ${atleta.nome} foi pago");
