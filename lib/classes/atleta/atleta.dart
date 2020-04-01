@@ -10,15 +10,8 @@ class Atleta extends Pessoa {
 
   get contrato => this._contrato;
   
-  Atleta(String nome,int idade,double peso,String cpf,String assinatura,this._modalidade)
-  {
-    this._nome = nome;
-    this._idade = idade;
-    this._peso = peso;
-    this._cpf = cpf;
-    this._assinatura = assinatura;
-  }
-
+  Atleta(String nome,int idade,double peso,String cpf,String assinatura,this._modalidade):super(nome,idade,peso,cpf,assinatura);
+ 
   void gastarSalario(double dinheiro) {
     if (dinheiro > salario) {
       print(

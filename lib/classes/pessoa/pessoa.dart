@@ -26,4 +26,6 @@ abstract class Pessoa {
   get salario => this._salario;
 
   String assinar() => assinatura;
+
+  Pessoa(this._nome,this._idade,this._peso,this._cpf,this._assinatura);
 }
