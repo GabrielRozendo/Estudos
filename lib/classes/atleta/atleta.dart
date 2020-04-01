@@ -40,9 +40,10 @@ class Atleta extends Pessoa {
     }
   }
 
-  void comer(double calorias) {
+   void comer(double calorias) {
+    final String _pesoAdquirido = _pesoGanho(calorias);
     print(
-        "O atleta $nome comeu e ganhou ${_pesoGanho(calorias)}! E agora esta com ${peso}Kg");
+        "O atleta $nome comeu e ganhou $_pesoAdquirido! E agora esta com ${peso}Kg");
   }
 
   String _pesoGanho(double calorias) {
