@@ -1,6 +1,7 @@
 import"lib/classes/pessoa/pessoa.dart";
 import "lib/classes/planejamentoT/planejamentoT.dart";
 import"lib/classes/atleta/atleta.dart";
+import"lib/classes/Texto/Texto.dart";
 
 class Tecnico extends Pessoa {
   PlanejamentoTreino _treino;
@@ -18,7 +19,7 @@ class Tecnico extends Pessoa {
   }
 
   void condicaoAtleta(Atleta atleta) {
-    print("O ${atleta.nome} está com ${atleta.peso}");
+    print(Texto.condicaoA(atleta.nome, atleta.peso));
   }
 
   void planejarTreino(String instrucoes, DateTime data) {

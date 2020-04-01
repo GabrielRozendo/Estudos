@@ -1,5 +1,6 @@
 import"lib/classes/pessoa/pessoa.dart";
 import"lib/classes/contrato/contrato.dart";
+import"lib/classes/Texto/Texto.dart";
 
 class Atleta extends Pessoa {
   String _modalidade;
@@ -8,23 +9,22 @@ class Atleta extends Pessoa {
   set modalidade(String modalidade) => this._modalidade = modalidade;
   get tipo => this._modalidade;
 
+  set contrato(Contrato this._contrato) => this._contrato = contrato;
   get contrato => this._contrato;
   
   Atleta(String nome,int idade,double peso,String cpf,String assinatura,this._modalidade):super(nome,idade,peso,cpf,assinatura);
  
   void gastarSalario(double dinheiro) {
     if (dinheiro > salario) {
-      print(
-          "$nome não pode gastar essa quantia, o salário atual é de $salario reais");
+     print(Texto.gastoNegadotxt(this.nome, this.salario));
     } else {
       this._salario -= dinheiro;
-      print("O atleta $nome gastou $dinheiro e agora tem $salario reais");
+       print(Texto.gastoAprovadotxt(this.nome, dinheiro, this.salario));
     }
   }
 
   void treinar(double calorias) {
-    print(
-        "O atleta $nome treinou e perdeu ${_pesoPerdido(calorias)}! E agora esta com ${peso}Kg");
+    print(Texto.treinar(this.nome, _pesoperdido, this.peso));
   }
 
   String _pesoPerdido(double calorias) {
@@ -42,8 +42,7 @@ class Atleta extends Pessoa {
 
    void comer(double calorias) {
     final String _pesoAdquirido = _pesoGanho(calorias);
-    print(
-        "O atleta $nome comeu e ganhou $_pesoAdquirido! E agora esta com ${peso}Kg");
+    print(Texto.comer(this.nome, _pesoAdquirido, this.peso));
   }
 
   String _pesoGanho(double calorias) {
@@ -60,6 +59,6 @@ class Atleta extends Pessoa {
   }
 
   String listarDados() {
-    return "\nNome:$nome \nIdade:$idade \nPeso:$peso \nCpf:$cpf \nTipo:$tipo \nSalário:$salario \nAssinatura:$assinatura \nContrato de adesão: ${this._contrato.listarDadosContrato()}";
+    return Texto.listarDadosA(this.nome, this.modalidade, this.assinatura,this.cpf, this.idade, this.peso, this.salario, this.contrato);
   }
 }

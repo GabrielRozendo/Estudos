@@ -1,4 +1,4 @@
-
+import"lib/classes/Texto/Texto.dart";
 class Contrato  {
   
   String _termo, _assinaturaDir, _assinaturaAt,_tipo;
@@ -18,7 +18,7 @@ class Contrato  {
 
 
   String listarDadosContrato() {
-    return "\nTipo do contrato: $tipo \nTermo - $termo  \nValor - $valor  \nData de início - $inicio  \nData final - $dtfinal  \nAssinatura do Diretor do time - $assinaturaDir  \nAssinatura do atleta - $assinaturaAt";
+    return Texto.listarDaddosC(this.tipo, this.termo, this.valor, this.inicio,this.dtfinal, this.assinaturaDir, this.assinaturaAt);
   }
 }
 

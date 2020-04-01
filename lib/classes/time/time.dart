@@ -1,6 +1,7 @@
 import"lib/classes/diretor/diretor.dart";
 import"lib/classes/tecnico/tecnico.dart";
 import"lib/classes/atleta/atleta.dart";
+import"lib/classes/Texto/Texto.dart";
 
 class Time {
   String _nome, _cnpj;
@@ -35,9 +36,9 @@ class Time {
       this._diretor.fazerContrato(atleta, valor, termos, dtinicio, dtfinal,tipo);
       this.atletas = atleta;
       this._fundoMonetario -= valor;
-      print("O ${atleta.nome} foi contratado!");
+      print(Texto.contratarA(atleta.nome));
     } else {
-      print("O ${atleta.nome} foi recusado");
+      print(Texto.recusarA(atleta.nome));
     }
   }
 
@@ -47,13 +48,13 @@ class Time {
     this._diretor.fazerContrato(atleta, valor, termos,dtinicio,dtfinal,tipo);
     this._atletas.removeWhere((atletas) => atleta.cpf == atletas.cpf);
     this._fundoMonetario += valor;
-    print("O atleta ${atleta.nome} foi vendido");
+    print(Texto.venderA(atleta.nome));
   }
 
   void pagarAtleta(Atleta atleta, double valor) {
     fundoMonetario -= valor;
     atleta.salario += valor;
-    print("O ${atleta.nome} foi pago");
+    print(Texto.pagarA(atleta.nome));
   }
 
   PlanejamentoTreino _obterTreino() {
@@ -62,15 +63,15 @@ class Time {
 
   void executarTreino() {
     if (_obterTreino().instrucoes != "" && this._tecnico.assinatura == _obterTreino().assinatura) {
-      return print("O técnico ${this._tecnico.nome} ira aplicar um treino na data de ${_obterTreino().data},as instruções seguem abaixo \n${_obterTreino().instrucoes}");
+      return print(Texto.executarTreino(this._tecnico.nome, _dtTreino, _instrucoes));
     } else {
-      return print("Treino negado");
+      return print(Texto.negarT();
     }
   }
 
   void listarDaddosA() {
     if (this._atletas.length == 0) {
-      print("O time não possui atletas");
+       print(Texto.semAtletas())
     } else {
       return this._atletas.forEach((item) => print(item.listarDados()));
     }
