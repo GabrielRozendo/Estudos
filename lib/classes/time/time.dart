@@ -27,11 +27,12 @@ class Time {
   get tecnico => this._tecnico;
   set atletas(Atleta atleta) => this._atletas.add(atleta);
 
-  void contratarAtleta(Atleta atleta, double valor, String termos,
+   void contratarAtleta(Atleta atleta, double valor, String termos,
       DateTime dtinicio, DateTime dtfinal) {
-    if (this._tecnico.testarAtleta(atleta.idade, double.parse(atleta.peso)) ==
-        true) {
-      this._diretor.fazerContratoAdesao(atleta, valor, termos, dtinicio, dtfinal);
+    if (this._tecnico.testarAtleta(atleta.idade, double.parse(atleta.peso)) ==true) 
+    {
+      String tipo = "Adesao";
+      this._diretor.fazerContrato(atleta, valor, termos, dtinicio, dtfinal,tipo);
       this.atletas = atleta;
       this._fundoMonetario -= valor;
       print("O ${atleta.nome} foi contratado!");
@@ -40,8 +41,10 @@ class Time {
     }
   }
 
-  void venderAtleta(Atleta atleta, double valor, String termos) {
-    this._diretor.fazerContratoRecisao(atleta, valor, termos, atleta.contratoA);
+  void venderAtleta(Atleta atleta, double valor, String termos,DateTime dtinicio,DateTime dtfinal) 
+  {
+    String tipo = "Recisão";
+    this._diretor.fazerContrato(atleta, valor, termos,dtinicio,dtfinal,tipo);
     this._atletas.removeWhere((atletas) => atleta.cpf == atletas.cpf);
     this._fundoMonetario += valor;
     print("O atleta ${atleta.nome} foi vendido");
