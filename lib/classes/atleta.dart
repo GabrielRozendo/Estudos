@@ -35,12 +35,10 @@ class Atleta extends Pessoa {
 
   String _pesoPerdido(double calorias) {
     calorias /= 7000;
-
+    this.peso -= calorias;
     if (calorias >= 1) {
-      this.peso-= calorias;
       return calorias.toStringAsPrecision(2) + "Kg";
     } else {
-      this.peso -= calorias;
       calorias *= 100;
       return calorias.toStringAsPrecision(2) + "g";
     }
@@ -53,12 +51,10 @@ class Atleta extends Pessoa {
 
   String _pesoGanho(double calorias) {
     calorias /= 7000;
-
+    this.peso += calorias;
     if (calorias >= 1) {
-      this.peso += calorias;
       return calorias.toStringAsPrecision(2) + "Kg";
     } else {
-      this.peso += calorias;
       calorias *= 100;
       return calorias.toStringAsPrecision(2) + "g";
     }
