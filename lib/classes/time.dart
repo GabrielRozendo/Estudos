@@ -32,12 +32,9 @@ class Time {
 
   void contratarAtleta(Atleta atleta, double valor, String termos,
       DateTime dtinicio, DateTime dtfinal) {
-    if (this._tecnico.testarAtleta(atleta.idade,atleta.peso) == true) 
-    {
+    if (this._tecnico.testarAtleta(atleta.idade, atleta.peso) == true) {
       String tipo = "Adesao";
-      this
-          ._diretor
-          .fazerContrato(atleta, valor, termos, dtinicio, dtfinal, tipo);
+      this._diretor.fazerContrato(atleta, valor, termos, dtinicio, dtfinal, tipo);
       this.atletas = atleta;
       this._fundoMonetario -= valor;
       print(Texto.contratarA(atleta.nome));
@@ -47,7 +44,7 @@ class Time {
   }
 
   void venderAtleta(Atleta atleta, double valor, String termos,
-      DateTime dtinicio, DateTime dtfinal) {
+    DateTime dtinicio, DateTime dtfinal) {
     String tipo = "Recisão";
     this._diretor.fazerContrato(atleta, valor, termos, dtinicio, dtfinal, tipo);
     this._atletas.removeWhere((atletas) => atleta.cpf == atletas.cpf);
@@ -65,9 +62,8 @@ class Time {
 
   void executarTreino() {
     String _instrucoes = _obterTreino().instrucoes;
-    String _assinatura =  _obterTreino().assinatura;
-    if (_instrucoes.isNotEmpty && this._tecnico.assinatura == _assinatura) 
-    {
+    String _assinatura = _obterTreino().assinatura;
+    if (_instrucoes.isNotEmpty && this._tecnico.assinatura == _assinatura) {
       String _data = _obterTreino().data;
       String _instrucoes = _obterTreino().instrucoes;
       return print(
