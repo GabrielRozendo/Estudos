@@ -58,6 +58,6 @@ class Atleta extends Pessoa {
   }
 
   String listarDados() {
-    return Texto.listarDadosA(this.nome, this.modalidade, this.assinatura,this.cpf, this.idade, this.peso, this.salario, this.contrato);
+    return Texto.listarDadosA(this.nome, this.modalidade, this.assinatura,this.cpf, this.idade, this.peso.toStringAsPrecision(4), this.salario, this.contrato);
   }
 }

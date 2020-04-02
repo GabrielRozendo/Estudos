@@ -13,7 +13,7 @@ abstract class Pessoa {
   get idade => this._idade;
 
   set peso(double peso) => this._peso = peso;
-  get peso => this._peso.toStringAsPrecision(4);
+  get peso => this._peso;
 
   set cpf(String cpf) => this._cpf = cpf;
   get cpf => this._cpf;

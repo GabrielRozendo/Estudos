@@ -31,8 +31,8 @@ class Time {
 
   void contratarAtleta(Atleta atleta, double valor, String termos,
       DateTime dtinicio, DateTime dtfinal) {
-    if (this._tecnico.testarAtleta(atleta.idade, double.parse(atleta.peso)) ==
-        true) {
+    if (this._tecnico.testarAtleta(atleta.idade,atleta.peso) == true) 
+    {
       String tipo = "Adesao";
       this
           ._diretor

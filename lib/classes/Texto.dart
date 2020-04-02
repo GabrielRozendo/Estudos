@@ -1,6 +1,8 @@
+import 'dart:ffi';
+
 import 'contrato.dart';
 class Texto {
-  static String gastoAprovadotxt(String nome, double dinheiro, salario) {
+  static String gastoAprovadotxt(String nome, double dinheiro, double salario) {
     return "O atleta $nome gastou $dinheiro e agora tem $salario reais";
   }
 
@@ -8,12 +10,12 @@ class Texto {
     return "$nome não pode gastar essa quantia, o salário atual é de $salario reais";
   }
 
-  static String treinar(String nome, String pesoPerdido, String peso) {
-    return "O atleta $nome comeu e ganhou $pesoPerdido! E agora esta com ${peso}Kg";
+  static String treinar(String nome, String pesoPerdido,double peso) {
+    return "O atleta $nome comeu e ganhou $pesoPerdido! E agora esta com ${peso.toStringAsPrecision(4)}Kg";
   }
 
-  static String comer(String nome, String pesoAdquirido, String peso) {
-    return "O atleta $nome comeu e ganhou $pesoAdquirido! E agora esta com ${peso}Kg";
+  static String comer(String nome, String pesoAdquirido, double peso) {
+    return "O atleta $nome comeu e ganhou $pesoAdquirido! E agora esta com ${peso.toStringAsPrecision(4)}Kg";
   }
 
   static String listarDadosA(String nome, String tipo, String assinatura,
@@ -33,7 +35,7 @@ class Texto {
     return "\nTipo do contrato: $tipo \nTermo - $termo  \nValor - $valor  \nData de início - $inicio  \nData final - $dtfinal  \nAssinatura do Diretor do time - $assinaturaDir  \nAssinatura do atleta - $assinaturaAt";
   }
 
-  static String condicaoA(String nome, String peso) {
+  static String condicaoA(String nome, Double peso) {
     return "O $nome está com $peso";
   }
 
