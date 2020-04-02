@@ -1,29 +1,28 @@
-import"lib/classes/pessoa/pessoa.dart";
-import"lib/classes/contrato/contrato.dart";
-import"lib/classes/Texto/Texto.dart";
+import"pessoa.dart";
+import"contrato.dart";
+import 'Texto.dart';
 
 class Atleta extends Pessoa {
-  String _modalidade;
+  String modalidade;
   Contrato _contrato;
 
-  set modalidade(String modalidade) => this._modalidade = modalidade;
-  get tipo => this._modalidade;
 
-  set contrato(Contrato this._contrato) => this._contrato = contrato;
+  set contrato(Contrato contrato) => this._contrato = contrato;
   get contrato => this._contrato;
   
-  Atleta(String nome,int idade,double peso,String cpf,String assinatura,this._modalidade):super(nome,idade,peso,cpf,assinatura);
+  Atleta(String nome,int idade,double peso,String cpf,String assinatura,this.modalidade):super(nome,idade,peso,cpf,assinatura);
  
   void gastarSalario(double dinheiro) {
     if (dinheiro > salario) {
      print(Texto.gastoNegadotxt(this.nome, this.salario));
     } else {
-      this._salario -= dinheiro;
+      this.salario -= dinheiro;
        print(Texto.gastoAprovadotxt(this.nome, dinheiro, this.salario));
     }
   }
 
   void treinar(double calorias) {
+    final String _pesoperdido = _pesoPerdido(calorias);
     print(Texto.treinar(this.nome, _pesoperdido, this.peso));
   }
 
@@ -31,10 +30,10 @@ class Atleta extends Pessoa {
     calorias /= 7000;
 
     if (calorias >= 1) {
-      this._peso -= calorias;
+      this.peso-= calorias;
       return calorias.toStringAsPrecision(2) + "Kg";
     } else {
-      this._peso -= calorias;
+      this.peso -= calorias;
       calorias *= 100;
       return calorias.toStringAsPrecision(2) + "g";
     }
@@ -49,10 +48,10 @@ class Atleta extends Pessoa {
     calorias /= 7000;
 
     if (calorias >= 1) {
-      this._peso += calorias;
+      this.peso += calorias;
       return calorias.toStringAsPrecision(2) + "Kg";
     } else {
-      this._peso += calorias;
+      this.peso += calorias;
       calorias *= 100;
       return calorias.toStringAsPrecision(2) + "g";
     }

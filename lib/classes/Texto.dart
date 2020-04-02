@@ -1,3 +1,4 @@
+import 'contrato.dart';
 class Texto {
   static String gastoAprovadotxt(String nome, double dinheiro, salario) {
     return "O atleta $nome gastou $dinheiro e agora tem $salario reais";

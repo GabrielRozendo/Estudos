@@ -1,7 +1,7 @@
-import"lib/classes/pessoa/pessoa.dart";
-import "lib/classes/planejamentoT/planejamentoT.dart";
-import"lib/classes/atleta/atleta.dart";
-import"lib/classes/Texto/Texto.dart";
+import"pessoa.dart";
+import "planejamentoT.dart";
+import"atleta.dart";
+import"Texto.dart";
 
 class Tecnico extends Pessoa {
   PlanejamentoTreino _treino;

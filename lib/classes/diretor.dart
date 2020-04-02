@@ -1,6 +1,6 @@
-import"lib/classes/pessoa/pessoa.dart";
-import"lib/classes/contrato/contrato.dart";
-import"lib/classes/atleta/atleta.dart";
+import"pessoa.dart";
+import"contrato.dart";
+import"atleta.dart";
 
 class Diretor extends Pessoa {
 

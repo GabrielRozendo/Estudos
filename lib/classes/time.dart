@@ -1,7 +1,8 @@
-import"lib/classes/diretor/diretor.dart";
-import"lib/classes/tecnico/tecnico.dart";
-import"lib/classes/atleta/atleta.dart";
-import"lib/classes/Texto/Texto.dart";
+import "diretor.dart";
+import "tecnico.dart";
+import "atleta.dart";
+import "Texto.dart";
+import 'planejamentoT.dart';
 
 class Time {
   String _nome, _cnpj;
@@ -28,12 +29,14 @@ class Time {
   get tecnico => this._tecnico;
   set atletas(Atleta atleta) => this._atletas.add(atleta);
 
-   void contratarAtleta(Atleta atleta, double valor, String termos,
+  void contratarAtleta(Atleta atleta, double valor, String termos,
       DateTime dtinicio, DateTime dtfinal) {
-    if (this._tecnico.testarAtleta(atleta.idade, double.parse(atleta.peso)) ==true) 
-    {
+    if (this._tecnico.testarAtleta(atleta.idade, double.parse(atleta.peso)) ==
+        true) {
       String tipo = "Adesao";
-      this._diretor.fazerContrato(atleta, valor, termos, dtinicio, dtfinal,tipo);
+      this
+          ._diretor
+          .fazerContrato(atleta, valor, termos, dtinicio, dtfinal, tipo);
       this.atletas = atleta;
       this._fundoMonetario -= valor;
       print(Texto.contratarA(atleta.nome));
@@ -42,10 +45,10 @@ class Time {
     }
   }
 
-  void venderAtleta(Atleta atleta, double valor, String termos,DateTime dtinicio,DateTime dtfinal) 
-  {
+  void venderAtleta(Atleta atleta, double valor, String termos,
+      DateTime dtinicio, DateTime dtfinal) {
     String tipo = "Recisão";
-    this._diretor.fazerContrato(atleta, valor, termos,dtinicio,dtfinal,tipo);
+    this._diretor.fazerContrato(atleta, valor, termos, dtinicio, dtfinal, tipo);
     this._atletas.removeWhere((atletas) => atleta.cpf == atletas.cpf);
     this._fundoMonetario += valor;
     print(Texto.venderA(atleta.nome));
@@ -62,16 +65,20 @@ class Time {
   }
 
   void executarTreino() {
-    if (_obterTreino().instrucoes != "" && this._tecnico.assinatura == _obterTreino().assinatura) {
-      return print(Texto.executarTreino(this._tecnico.nome, _dtTreino, _instrucoes));
+    if (_obterTreino().instrucoes != "" &&
+        this._tecnico.assinatura == _obterTreino().assinatura) {
+      String _data = _obterTreino().data;
+      String _instrucoes = _obterTreino().instrucoes;
+      return print(
+          Texto.executarTreino(this._tecnico.nome, _data, _instrucoes));
     } else {
-      return print(Texto.negarT();
+      return print(Texto.negarT());
     }
   }
 
   void listarDaddosA() {
     if (this._atletas.length == 0) {
-       print(Texto.semAtletas())
+      print(Texto.semAtletas());
     } else {
       return this._atletas.forEach((item) => print(item.listarDados()));
     }
