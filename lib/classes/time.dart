@@ -80,7 +80,7 @@ class Time {
     if (this._atletas.length == 0) {
       print(Texto.semAtletas());
     } else {
-      return this._atletas.forEach((item) => print(item.listarDados()));
+      return this._atletas.forEach((item) => print(item.toString()));
     }
   }
 }

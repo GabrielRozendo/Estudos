@@ -12,6 +12,13 @@ class Atleta extends Pessoa {
   
   Atleta(String nome,int idade,double peso,String cpf,String assinatura,this.modalidade):super(nome,idade,peso,cpf,assinatura);
  
+  @override
+  String toString() {
+    
+    return Texto.listarDadosA(nome, modalidade, assinatura, cpf, idade, peso, salario, contrato);
+  }
+
+
   void gastarSalario(double dinheiro) {
     if (dinheiro > salario) {
      print(Texto.gastoNegadotxt(this.nome, this.salario));
@@ -57,7 +64,5 @@ class Atleta extends Pessoa {
     }
   }
 
-  String listarDados() {
-    return Texto.listarDadosA(this.nome, this.modalidade, this.assinatura,this.cpf, this.idade, this.peso.toStringAsPrecision(4), this.salario, this.contrato);
-  }
+  
 }

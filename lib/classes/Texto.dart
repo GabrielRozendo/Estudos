@@ -19,8 +19,8 @@ class Texto {
   }
 
   static String listarDadosA(String nome, String tipo, String assinatura,
-      String cpf, int idade, String peso, double salario, Contrato contrato) {
-    return "\nNome:$nome \nIdade:$idade \nPeso:$peso \nCpf:$cpf \nTipo:$tipo \nSalário:$salario \nAssinatura:$assinatura \nContrato de adesão: ${contrato.listarDadosContrato()}";
+      String cpf, int idade, double peso, double salario, Contrato contrato) {
+    return "\nNome:$nome \nIdade:$idade \nPeso:${peso.toStringAsPrecision(4)} \nCpf:$cpf \nTipo:$tipo \nSalário:$salario \nAssinatura:$assinatura \nContrato de adesão: ${contrato.listarDadosContrato()}";
   }
 
   static String listarDaddosC(
