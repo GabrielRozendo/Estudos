@@ -61,13 +61,13 @@ class Time {
     print(Texto.pagarA(atleta.nome));
   }
 
-  PlanejamentoTreino _obterTreino() {
-    return this._tecnico.treino;
-  }
+  PlanejamentoTreino _obterTreino() => this._tecnico.treino;
 
   void executarTreino() {
-    if (_obterTreino().instrucoes != "" &&
-        this._tecnico.assinatura == _obterTreino().assinatura) {
+    String _instrucoes = _obterTreino().instrucoes;
+    String _assinatura =  _obterTreino().assinatura;
+    if (_instrucoes.isNotEmpty && this._tecnico.assinatura == _assinatura) 
+    {
       String _data = _obterTreino().data;
       String _instrucoes = _obterTreino().instrucoes;
       return print(
