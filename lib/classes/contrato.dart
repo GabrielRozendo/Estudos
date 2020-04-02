@@ -1,7 +1,10 @@
 import "Texto.dart";
 class Contrato  {
   
-  String _termo, _assinaturaDir, _assinaturaAt,_tipo;
+  String _termo; 
+  String _assinaturaDir; 
+  String _assinaturaAt;
+  String _tipo;
   double _valor;
   DateTime _dtinicio, _dtfinal;
    

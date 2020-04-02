@@ -5,7 +5,8 @@ import "Texto.dart";
 import 'planejamentoT.dart';
 
 class Time {
-  String _nome, _cnpj;
+  String _nome;
+  final String _cnpj;
   double _fundoMonetario;
   List _atletas = <Atleta>[];
   Diretor _diretor;

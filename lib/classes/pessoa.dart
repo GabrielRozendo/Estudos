@@ -2,7 +2,7 @@ abstract class Pessoa {
   String _nome;
   int _idade;
   double _peso;
-  String _cpf;
+  final String _cpf;
   double _salario;
   String _assinatura;
 
@@ -15,7 +15,6 @@ abstract class Pessoa {
   set peso(double peso) => this._peso = peso;
   get peso => this._peso;
 
-  set cpf(String cpf) => this._cpf = cpf;
   get cpf => this._cpf;
 
   set assinatura(String assinatura) =>
