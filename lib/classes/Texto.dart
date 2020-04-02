@@ -1,6 +1,5 @@
-import 'dart:ffi';
-
 import 'contrato.dart';
+
 class Texto {
   static String gastoAprovadotxt(String nome, double dinheiro, double salario) {
     return "O atleta $nome gastou $dinheiro e agora tem $salario reais";
@@ -35,7 +34,7 @@ class Texto {
     return "\nTipo do contrato: $tipo \nTermo - $termo  \nValor - $valor  \nData de início - $inicio  \nData final - $dtfinal  \nAssinatura do Diretor do time - $assinaturaDir  \nAssinatura do atleta - $assinaturaAt";
   }
 
-  static String condicaoA(String nome, Double peso) {
+  static String condicaoA(String nome, double peso) {
     return "O $nome está com $peso";
   }
 

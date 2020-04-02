@@ -1,4 +1,4 @@
-import"Texto.dart";
+import "Texto.dart";
 class Contrato  {
   
   String _termo, _assinaturaDir, _assinaturaAt,_tipo;

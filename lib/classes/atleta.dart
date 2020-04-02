@@ -1,5 +1,5 @@
-import"pessoa.dart";
-import"contrato.dart";
+import 'pessoa.dart';
+import 'contrato.dart';
 import 'Texto.dart';
 
 class Atleta extends Pessoa {
