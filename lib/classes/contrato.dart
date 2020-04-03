@@ -1,4 +1,4 @@
-import "Texto.dart";
+import "texto.dart";
 
 class Contrato {
   String termo;
@@ -13,9 +13,8 @@ class Contrato {
       this.assinaturaAt, this.assinaturaDir);
 
   @override
-  toString()
-  {
-    return Texto.listarDaddosC(tipo, termo, valor, dtinicio, dtfinal, assinaturaDir, assinaturaAt);
+  String toString() {
+    return Texto.listarDaddosC(
+        tipo, termo, valor, dtinicio, dtfinal, assinaturaDir, assinaturaAt);
   }
-
 }

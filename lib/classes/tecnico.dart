@@ -1,7 +1,7 @@
 import "pessoa.dart";
 import "planejamentoT.dart";
 import "atleta.dart";
-import "Texto.dart";
+import "texto.dart";
 
 class Tecnico extends Pessoa {
   PlanejamentoTreino treino;

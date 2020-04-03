@@ -1,6 +1,6 @@
 import "pessoa.dart";
 import "contrato.dart";
-import "Texto.dart";
+import "texto.dart";
 
 class Atleta extends Pessoa {
   String modalidade;
