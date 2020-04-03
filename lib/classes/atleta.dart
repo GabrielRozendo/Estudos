@@ -4,14 +4,11 @@ import "Texto.dart";
 
 class Atleta extends Pessoa {
   String modalidade;
-  Contrato _contrato;
-
-  set contrato(Contrato contrato) => this._contrato = contrato;
-  get contrato => this._contrato;
+  Contrato contrato;
 
   Atleta(String nome, int idade, double peso, String cpf, String assinatura,
-      this.modalidade)
-      : super(nome, idade, peso, cpf, assinatura);
+      double salario, this.modalidade)
+      : super(nome,idade,peso,cpf,assinatura,salario);
 
   @override
   String toString() {

@@ -53,7 +53,7 @@ class Texto {
     return "O $nome foi pago";
   }
 
-  static String executarTreino(String nome, String data, String instrucoes) {
+  static String executarTreino(String nome, DateTime data, String instrucoes) {
     return "O técnico $nome ira aplicar um treino na data de $data,as instruções seguem abaixo \n$instrucoes";
   }
 
