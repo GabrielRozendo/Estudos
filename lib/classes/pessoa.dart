@@ -8,10 +8,6 @@ abstract class Pessoa {
 
   set idade(int idade) => this._idade = idade;
   get idade => this._idade;
-
-
-
-  String assinar() => assinatura;
-
+  
   Pessoa(this.nome, this._idade, this.peso, this.cpf, this.assinatura,this.salario);
 }

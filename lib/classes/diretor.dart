@@ -9,6 +9,6 @@ class Diretor extends Pessoa {
   void fazerContrato(Atleta atleta, double valor, String termos,
       DateTime dtinicio, DateTime dtfinal, String tipo) {
     atleta.contrato = Contrato(tipo, termos, valor, dtinicio, dtfinal,
-        atleta.assinar(), this.assinar());
+        atleta.assinatura, this.assinatura);
   }
 }

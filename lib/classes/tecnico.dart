@@ -24,7 +24,7 @@ class Tecnico extends Pessoa {
 
   void planejarTreino(String instrucoes, DateTime data) {
     PlanejamentoTreino treino =
-        PlanejamentoTreino(instrucoes, data, this.assinar());
+        PlanejamentoTreino(instrucoes, data, this.assinatura);
     this.treino = treino;
   }
 }
