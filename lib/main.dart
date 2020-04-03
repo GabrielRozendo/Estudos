@@ -1,7 +1,7 @@
-import 'classes/atleta.dart';
-import 'classes/tecnico.dart';
-import 'classes/diretor.dart';
-import 'classes/time.dart';
+import "classes/atleta.dart";
+import "classes/tecnico.dart";
+import "classes/diretor.dart";
+import "classes/time.dart";
 
 void main() {
   Atleta ok = Atleta("Pedro", 18, 76, "121.692.176-33", "pedro", "Futsal");

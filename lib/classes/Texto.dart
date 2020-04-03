@@ -1,4 +1,4 @@
-import 'contrato.dart';
+import "contrato.dart";
 
 class Texto {
   static String gastoAprovadotxt(String nome, double dinheiro, double salario) {
