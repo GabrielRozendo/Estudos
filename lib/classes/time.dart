@@ -24,7 +24,11 @@ class Time {
 
   @override
   String toString() {
-    _listarDaddosA();
+    if (this._atletas.length == 0) {
+      print(Texto.semAtletas());
+    } else {
+      _listarA();
+    }
   }
 
   void contratarAtleta(Atleta atleta, double valor, String termos,
@@ -72,11 +76,7 @@ class Time {
     }
   }
 
-  void _listarDaddosA() {
-    if (this._atletas.length == 0) {
-      print(Texto.semAtletas());
-    } else {
-      return this._atletas.forEach((item) => print(item.toString()));
-    }
+  void _listarA() {
+    this._atletas.forEach((item) => print(item.toString()));
   }
 }
