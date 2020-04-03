@@ -11,11 +11,7 @@ class Tecnico extends Pessoa {
       : super(nome, idade, peso, cpf, assinatura, salario);
 
   bool testarAtleta(int idade, double peso) {
-    if (idade >= 18 && peso > 60) {
-      return true;
-    } else {
-      return false;
-    }
+    return idade >= 18 && peso > 60;
   }
 
   void condicaoAtleta(Atleta atleta) {
