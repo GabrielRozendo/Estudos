@@ -2,7 +2,7 @@ import "diretor.dart";
 import "tecnico.dart";
 import "atleta.dart";
 import "Texto.dart";
-import 'planejamentoT.dart';
+import "planejamentoT.dart";
 
 class Time {
   String _nome;

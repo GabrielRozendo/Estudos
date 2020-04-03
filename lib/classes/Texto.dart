@@ -9,7 +9,7 @@ class Texto {
     return "$nome não pode gastar essa quantia, o salário atual é de $salario reais";
   }
 
-  static String treinar(String nome, String pesoPerdido,double peso) {
+  static String treinar(String nome, String pesoPerdido, double peso) {
     return "O atleta $nome comeu e ganhou $pesoPerdido! E agora esta com ${peso.toStringAsPrecision(4)}Kg";
   }
 
@@ -29,8 +29,7 @@ class Texto {
       DateTime inicio,
       DateTime dtfinal,
       String assinaturaDir,
-      String assinaturaAt) 
-  {
+      String assinaturaAt) {
     return "\nTipo do contrato: $tipo \nTermo - $termo  \nValor - $valor  \nData de início - $inicio  \nData final - $dtfinal  \nAssinatura do Diretor do time - $assinaturaDir  \nAssinatura do atleta - $assinaturaAt";
   }
 

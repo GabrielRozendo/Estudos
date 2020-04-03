@@ -8,7 +8,8 @@ class Tecnico extends Pessoa {
 
   get treino => this._treino;
 
-  Tecnico(String nome,int idade,double peso,String cpf,String assinatura):super(nome,idade,peso,cpf,assinatura);
+  Tecnico(String nome, int idade, double peso, String cpf, String assinatura)
+      : super(nome, idade, peso, cpf, assinatura);
 
   bool testarAtleta(int idade, double peso) {
     if (idade >= 18 && peso > 60) {
@@ -23,7 +24,8 @@ class Tecnico extends Pessoa {
   }
 
   void planejarTreino(String instrucoes, DateTime data) {
-    PlanejamentoTreino treino = PlanejamentoTreino(instrucoes, data, this.assinar());
+    PlanejamentoTreino treino =
+        PlanejamentoTreino(instrucoes, data, this.assinar());
     this._treino = treino;
   }
 }

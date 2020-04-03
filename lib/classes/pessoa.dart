@@ -26,5 +26,5 @@ abstract class Pessoa {
 
   String assinar() => assinatura;
 
-  Pessoa(this._nome,this._idade,this._peso,this._cpf,this._assinatura);
+  Pessoa(this._nome, this._idade, this._peso, this._cpf, this._assinatura);
 }

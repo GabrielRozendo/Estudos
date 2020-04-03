@@ -1,4 +1,3 @@
-
 class PlanejamentoTreino {
   String _instrucoes;
   DateTime _data;

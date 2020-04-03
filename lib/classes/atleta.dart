@@ -6,25 +6,25 @@ class Atleta extends Pessoa {
   String modalidade;
   Contrato _contrato;
 
-
   set contrato(Contrato contrato) => this._contrato = contrato;
   get contrato => this._contrato;
-  
-  Atleta(String nome,int idade,double peso,String cpf,String assinatura,this.modalidade):super(nome,idade,peso,cpf,assinatura);
- 
+
+  Atleta(String nome, int idade, double peso, String cpf, String assinatura,
+      this.modalidade)
+      : super(nome, idade, peso, cpf, assinatura);
+
   @override
   String toString() {
-    
-    return Texto.listarDadosA(nome, modalidade, assinatura, cpf, idade, peso, salario, contrato);
+    return Texto.listarDadosA(
+        nome, modalidade, assinatura, cpf, idade, peso, salario, contrato);
   }
-
 
   void gastarSalario(double dinheiro) {
     if (dinheiro > salario) {
-     print(Texto.gastoNegadotxt(this.nome, this.salario));
+      print(Texto.gastoNegadotxt(this.nome, this.salario));
     } else {
       this.salario -= dinheiro;
-       print(Texto.gastoAprovadotxt(this.nome, dinheiro, this.salario));
+      print(Texto.gastoAprovadotxt(this.nome, dinheiro, this.salario));
     }
   }
 
@@ -44,7 +44,7 @@ class Atleta extends Pessoa {
     }
   }
 
-   void comer(double calorias) {
+  void comer(double calorias) {
     final String _pesoAdquirido = _pesoGanho(calorias);
     print(Texto.comer(this.nome, _pesoAdquirido, this.peso));
   }
@@ -59,6 +59,4 @@ class Atleta extends Pessoa {
       return calorias.toStringAsPrecision(2) + "g";
     }
   }
-
-  
 }
