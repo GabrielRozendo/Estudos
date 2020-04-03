@@ -27,5 +27,5 @@ void main() {
   vasco.pagarAtleta(ok, 1000);
   vasco.venderAtleta(ok, 10, "tadsadsadasdas", DateTime.parse("2011-12-06"),
       DateTime.parse("2012-12-06"));
-  vasco.listarDaddosA();
+  print(vasco.toString());
 }

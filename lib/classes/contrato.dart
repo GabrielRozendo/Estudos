@@ -9,13 +9,13 @@ class Contrato {
   DateTime dtinicio;
   DateTime dtfinal;
 
- 
-
   Contrato(this.tipo, this.termo, this.valor, this.dtinicio, this.dtfinal,
       this.assinaturaAt, this.assinaturaDir);
 
-  String listarDadosContrato() {
-    return Texto.listarDaddosC(this.tipo, this.termo, this.valor, this.dtinicio,
-        this.dtfinal, this.assinaturaDir, this.assinaturaAt);
+  @override
+  toString()
+  {
+    return Texto.listarDaddosC(tipo, termo, valor, dtinicio, dtfinal, assinaturaDir, assinaturaAt);
   }
+
 }
